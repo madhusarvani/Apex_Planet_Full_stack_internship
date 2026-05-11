@@ -1,0 +1,378 @@
+/* ============================================
+   PROFESSIONAL CALM CSS – FULL WIDTH
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f7fb;
+    color: #1e293b;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ========== NAVBAR – FIXED FOR MOBILE ========== */
+.navbar {
+    background: #0f172a !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 0.75rem 0;
+    margin-bottom: 2rem;
+}
+.navbar .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #f1f5f9 !important;
+}
+.navbar-brand i {
+    color: #60a5fa;
+}
+.navbar .nav-link {
+    color: #cbd5e1 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.navbar .nav-link:hover {
+    background: rgba(255,255,255,0.12);
+    color: white !important;
+}
+/* Hamburger toggler icon – visible */
+.navbar-toggler {
+    border-color: #64748b;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ========== MOBILE FIX – makes collapsed menu dark ========== */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: #0f172a;
+        padding: 1rem;
+        border-radius: 20px;
+        margin-top: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    .navbar-nav {
+        gap: 0.3rem;
+    }
+    .navbar .nav-link {
+        padding: 0.7rem 1rem;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.03);
+    }
+    .navbar .nav-link:hover {
+        background: #3b82f6;
+        color: white !important;
+    }
+}
+
+/* Main content – flexible */
+main {
+    flex: 1;
+}
+.main-default {
+    padding: 0 1rem 2rem 1rem;
+}
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s;
+    margin-bottom: 1.5rem;
+}
+.card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.card-header {
+    background: white;
+    border-bottom: 1px solid #eef2f6;
+    padding: 1.2rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.card-header.bg-primary {
+    background: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0;
+}
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 12px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.btn-primary {
+    background: #3b82f6;
+    border: none;
+}
+.btn-primary:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+.btn-danger {
+    background: #ef4444;
+}
+.btn-warning {
+    background: #f59e0b;
+    color: white;
+}
+.btn-sm {
+    border-radius: 8px;
+    padding: 0.35rem 0.8rem;
+}
+
+/* Forms */
+.form-label {
+    font-weight: 500;
+    color: #334155;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+}
+.form-control, .form-select {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    transition: all 0.2s;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #94a3b8;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    outline: none;
+}
+.input-group-text {
+    background: #f9fafb;
+    border: 1px solid #e2e8f0;
+    border-right: none;
+    color: #64748b;
+}
+.input-group .form-control {
+    border-left: none;
+}
+.input-group .form-control:focus {
+    border-left: none;
+}
+
+/* Table */
+.table-responsive {
+    border-radius: 16px;
+    overflow-x: auto;
+}
+.table {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+.table thead th {
+    background: #f9fafb;
+    color: #1e293b;
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+.table tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f5f9;
+}
+.table tbody tr:hover {
+    background: #fef9e8;
+}
+.badge-admin, .badge-user {
+    padding: 0.2rem 0.7rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.badge-admin {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+.badge-user {
+    background: #e0e7ff;
+    color: #4338ca;
+}
+.profile-img-sm {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.profile-img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Alerts */
+.alert {
+    border-radius: 16px;
+    border: none;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.85rem;
+    animation: slideDown 0.3s ease;
+}
+.alert-success {
+    background: #ecfdf5;
+    color: #065f46;
+}
+.alert-danger {
+    background: #fef2f2;
+    color: #991b1b;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Footer – full width */
+footer {
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding: 1.2rem 0;
+    margin-top: 3rem;
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+footer .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========== LOGIN / REGISTER PAGES (centered card) ========== */
+body.login-page, body.register-page {
+    background: #eef2ff;
+}
+body.login-page main, 
+body.register-page main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px - 80px); /* subtract navbar + footer approx */
+}
+.auth-card {
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 28px;
+    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+    border: none;
+}
+.auth-card .card-header {
+    background: transparent;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.auth-card .card-body {
+    padding: 1.8rem;
+}
+.btn-animate {
+    transition: all 0.2s;
+}
+.btn-animate:hover {
+    transform: translateY(-1px);
+}
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+.btn-loading .btn-text {
+    display: none;
+}
+.btn-loading .spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+.shake {
+    animation: gentleShake 0.3s ease-in-out 2;
+}
+@keyframes gentleShake {
+    0%,100% { transform: translateX(0);}
+    25% { transform: translateX(-3px);}
+    75% { transform: translateX(3px);}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar .container-fluid {
+        padding: 0 1rem;
+    }
+    .card-body {
+        padding: 1.2rem;
+    }
+    .table thead {
+        display: none;
+    }
+    .table tbody tr {
+        display: block;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        background: white;
+    }
+    .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.7rem;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    .table tbody td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        width: 40%;
+    }
+    body.login-page main, body.register-page main {
+        min-height: calc(100vh - 60px - 70px);
+        padding: 1rem;
+    }
+}
+/* Force dark text on all cards and main content */
+.card, .card-body, .card-header, main, .container, .alert, table {
+    color: #1e293b !important;
+}
+
+.card-body p, .card-body h4, .card-body h5, .card-body .alert {
+    color: #1e293b !important;
+}
+
+/* Keep only navbar text light */
+.navbar, .navbar * {
+    color: #f1f5f9 !important;
+}
+img[src*="data:image/svg+xml"] {
+    background: #f1f5f9;
+    object-fit: cover;
+}

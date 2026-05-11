@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Madhu Sarvani | Full‑Stack Developer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Madhu Sarvani" class="profile-photo">
+            <h1>Madhu Sarvani</h1>
+            <p class="tagline">Full‑Stack Developer | Problem Solver | Tech Enthusiast</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Work</a>
+                <a href="contact.html" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="main-nav">
+    <div class="container">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<main>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a passionate Full‑Stack Developer with hands‑on experience in building responsive web applications. I love turning complex problems into simple, elegant designs. My stack includes HTML5, CSS3, JavaScript, PHP, MySQL, and Git.</p>
+                <p>Currently, I'm deepening my knowledge in modern frameworks and cloud deployment. I'm always eager to learn and collaborate on innovative projects.</p>
+                <!-- Download Resume button -->
+                <button id="downloadResumeBtn" class="btn btn-secondary">📄 Download Resume (PDF)</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <ul class="skills-list"></ul>
+            <div class="skills-control">
+                <button id="toggleSkillsBtn" class="btn btn-small">Hide Skills</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid"></div>
+        </div>
+    </section>
+
+    <div class="dark-mode-toggle">
+        <button id="darkModeBtn" aria-label="Dark mode">🌙</button>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Madhu Sarvani. Built with HTML5, CSS3 & JavaScript.</p>
+        <div class="social-links">
+            <a href="#">GitHub</a> |
+            <a href="#">LinkedIn</a> |
+            <a href="#">Twitter</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal -->
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <p id="modalTech"></p>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

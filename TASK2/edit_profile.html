@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - BrandFlow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="dashboard.html">✨ BrandFlow</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="edit_profile.html">Edit Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center align-items-center flex-grow-1 py-5">
+        <div class="card shadow-lg border-0 rounded-4 animate-card" style="max-width: 550px; width: 100%;">
+            <div class="card-body p-4 p-md-5">
+                <h2 class="text-center mb-4 fw-bold" style="color: #4361ee;">Edit Profile</h2>
+                <form id="editProfileForm">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" id="editUsername" class="form-control" required>
+                        <div class="invalid-feedback" id="usernameError"></div>
+                        <small id="usernameStatus" class="text-muted"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="editEmail" class="form-control" required>
+                        <div class="invalid-feedback" id="emailError"></div>
+                        <small id="emailStatus" class="text-muted"></small>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Current Password (required to save changes)</label>
+                        <input type="password" id="currentPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill">Update Profile</button>
+                </form>
+                <div id="message" class="mt-3 text-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white-50 text-center py-3 mt-auto">
+        <small>&copy; 2026 BrandFlow. All rights reserved.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Load current user data
+        async function loadUserData() {
+            const res = await fetch('php/get_user_data.php');
+            const data = await res.json();
+            if (data.logged_in) {
+                document.getElementById('editUsername').value = data.username;
+                document.getElementById('editEmail').value = data.email;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+        loadUserData();
+
+        // AJAX check for username/email (to avoid duplicates)
+        async function checkExists(type, value, currentVal) {
+            if (!value || value === currentVal) return false;
+            const res = await fetch(`php/check_user.php?type=${type}&value=${encodeURIComponent(value)}`);
+            const data = await res.json();
+            return data.exists;
+        }
+
+        document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('editUsername').value;
+            const email = document.getElementById('editEmail').value;
+            const password = document.getElementById('currentPassword').value;
+
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('email', email);
+            formData.append('password', password);
+
+            const res = await fetch('php/update_profile.php', { method: 'POST', body: formData });
+            const result = await res.text();
+            const msgDiv = document.getElementById('message');
+            if (result === 'success') {
+                msgDiv.innerHTML = '<div class="alert alert-success">Profile updated successfully!</div>';
+                setTimeout(() => window.location.href = 'dashboard.html', 1500);
+            } else if (result === 'wrong_password') {
+                msgDiv.innerHTML = '<div class="alert alert-danger">Incorrect current password.</div>';
+            } else if (result === 'username_taken') {
+                msgDiv.innerHTML = '<div class="alert alert-danger">Username already taken.</div>';
+            } else if (result === 'email_taken') {
+                msgDiv.innerHTML = '<div class="alert alert-danger">Email already taken.</div>';
+            } else {
+                msgDiv.innerHTML = '<div class="alert alert-danger">Update failed. Try again.</div>';
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn')?.addEventListener('click', async (e) => {
+            e.preventDefault();
+            await fetch('php/logout.php');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
